@@ -1,0 +1,24 @@
+<h1>All Players</h1>
+
+<div class="centered">
+  <%= link_to new_player_path, class: "button" do %>
+    <i class="fas fa-plus-circle"></i> Add New Player
+  <% end %>
+</div>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td>
+        <%= link_to player_path(player), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-link" do %>
+          <i class="fas fa-trash"></i> Delete
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

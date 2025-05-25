@@ -1,0 +1,9 @@
+<h1>Add New Player</h1>
+
+<div class="form-container">
+  <%= form_with model: @player do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.submit "Create Player" %>
+  <% end %>
+</div>

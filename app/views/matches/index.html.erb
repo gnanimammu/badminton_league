@@ -1,0 +1,16 @@
+<h1>Match History</h1>
+
+<table>
+  <tr>
+    <th><i class="fas fa-crown"></i> Winner</th>
+    <th><i class="fas fa-skull-crossbones"></i> Loser</th>
+    <th><i class="fas fa-calendar-alt"></i> Time</th>
+  </tr>
+  <% @matches.each do |match| %>
+    <tr>
+      <td><%= match.winner.name %></td>
+      <td><%= match.loser.name %></td>
+      <td><%= match.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,16 @@
+<h1>Leaderboard</h1>
+
+<table>
+  <tr>
+    <th><i class="fas fa-user"></i> Name</th>
+    <th><i class="fas fa-medal"></i> Wins</th>
+    <th><i class="fas fa-times-circle"></i> Losses</th>
+  </tr>
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= player.wins.count %></td>
+      <td><%= player.losses.count %></td>
+    </tr>
+  <% end %>
+</table>

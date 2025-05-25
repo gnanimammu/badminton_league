@@ -1,0 +1,13 @@
+<h1>Record a Match</h1>
+
+<div class="form-container">
+  <%= form_with model: @match do |form| %>
+    <%= form.label :winner_id, "Winner" %>
+    <%= form.collection_select :winner_id, @players, :id, :name %>
+
+    <%= form.label :loser_id, "Loser" %>
+    <%= form.collection_select :loser_id, @players, :id, :name %>
+
+    <%= form.submit "Record Match" %>
+  <% end %>
+</div>
