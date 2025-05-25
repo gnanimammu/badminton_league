@@ -7,7 +7,12 @@
     <%= stylesheet_link_tag "application", media: "all" %>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pVZ7Np2b8xTvP01xB6kBzqZfk9WTV3LV6QkjfZmU1GhJbq2QVtF3YXQ+4Wr8x7kLcqx36j8FpOzOj3r7kl3sYg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-pVZ7Np2b8xTvP01xB6kBzqZfk9WTV3LV6QkjfZmU1GhJbq2QVtF3YXQ+4Wr8x7kLcqx36j8FpOzOj3r7kl3sYg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <%= javascript_include_tag "application", type: "module", "data-turbo-track": "reload" %>
+
   </head>
 
   <body>
@@ -16,7 +21,23 @@
       <%= link_to raw('<i class="fas fa-trophy"></i> Leaderboard'), leaderboard_path %>
       <%= link_to raw('<i class="fas fa-table-tennis"></i> Matches'), matches_path %>
       <%= link_to raw('<i class="fas fa-plus-circle"></i> Record Match'), new_match_path %>
+
+      <% if user_signed_in? %>
+        <%= link_to raw('<i class="fas fa-user-circle"></i> Logout'), destroy_user_session_path,
+            data: { "turbo-method": "delete", confirm: "Are you sure you want to logout?" } %>
+
+      <% else %>
+        <%= link_to raw('<i class="fas fa-sign-in-alt"></i> Login'), new_user_session_path %>
+        <%= link_to raw('<i class="fas fa-user-plus"></i> Sign Up'), new_user_registration_path %>
+      <% end %>
     </div>
+
+    <% if notice %>
+      <p class="flash notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="flash alert"><%= alert %></p>
+    <% end %>
 
     <div class="container">
       <%= yield %>
